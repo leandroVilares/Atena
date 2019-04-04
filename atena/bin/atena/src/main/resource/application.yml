@@ -1,0 +1,9 @@
+jdbc: 
+  oracle: 
+    url: jdbc:oracle:thin:@brtlvlty0558fu.redecorp.br:1521:soabqa
+    username: spn_ow
+    password: "vivo08"
+    maxPoolSize: "50"
+    minPoolSize: "10"
+    maxStatements: "100"
+    testConnection: true

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+  <!--
+
+Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
+Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
+Gerado em: 2019.03.13 às 04:53:53 PM BRT 
+
+  -->
+  <bindings xmlns:tns="http://ws.soa.cleartech.com.br/" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="com.brq.atena.wsdl.conector"/>
+    </schemaBindings>
+    <bindings scd="~tns:getTicketMessageResponse">
+      <class ref="com.brq.atena.wsdl.conector.GetTicketMessageResponse"/>
+    </bindings>
+    <bindings scd="~tns:PortabilityTicketSearchException">
+      <class ref="com.brq.atena.wsdl.conector.PortabilityTicketSearchException"/>
+    </bindings>
+    <bindings scd="~tns:getTicketHistoryResponse">
+      <class ref="com.brq.atena.wsdl.conector.GetTicketHistoryResponse"/>
+    </bindings>
+    <bindings scd="~tns:getCurrentTicket">
+      <class ref="com.brq.atena.wsdl.conector.GetCurrentTicket"/>
+    </bindings>
+    <bindings scd="~tns:getCurrentTicketResponse">
+      <class ref="com.brq.atena.wsdl.conector.GetCurrentTicketResponse"/>
+    </bindings>
+    <bindings scd="~tns:getPortabilityHistoryResponse">
+      <class ref="com.brq.atena.wsdl.conector.GetPortabilityHistoryResponse"/>
+    </bindings>
+    <bindings scd="~tns:getPortabilityHistory">
+      <class ref="com.brq.atena.wsdl.conector.GetPortabilityHistory"/>
+    </bindings>
+    <bindings scd="~tns:getTicketHistory">
+      <class ref="com.brq.atena.wsdl.conector.GetTicketHistory"/>
+    </bindings>
+    <bindings scd="~tns:getTicketMessage">
+      <class ref="com.brq.atena.wsdl.conector.GetTicketMessage"/>
+    </bindings>
+    <bindings scd="~tns:messageHistoryOut">
+      <class ref="com.brq.atena.wsdl.conector.MessageHistoryOut"/>
+    </bindings>
+    <bindings scd="~tns:portabilityHistoryIn">
+      <class ref="com.brq.atena.wsdl.conector.PortabilityHistoryIn"/>
+    </bindings>
+    <bindings scd="~tns:messageHistoryIn">
+      <class ref="com.brq.atena.wsdl.conector.MessageHistoryIn"/>
+    </bindings>
+    <bindings scd="~tns:portabilityTicketOut">
+      <class ref="com.brq.atena.wsdl.conector.PortabilityTicketOut"/>
+    </bindings>
+    <bindings scd="~tns:portabilityTicketIn">
+      <class ref="com.brq.atena.wsdl.conector.PortabilityTicketIn"/>
+    </bindings>
+  </bindings>
+</bindings>
