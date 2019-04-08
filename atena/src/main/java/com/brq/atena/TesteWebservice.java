@@ -12,10 +12,10 @@ public class TesteWebservice {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		//InvocarWebservice prepago = new InvocarWebservice();
-		//prepago.chamarWebService();
-		datainicial();
-		Datafinal();
+		InvocarWebservice prepago = new InvocarWebservice();
+		prepago.createTemplateConectorGetPortabilityHistory("11941599389");
+		//datainicial();
+		//Datafinal();
 	
 	}
 

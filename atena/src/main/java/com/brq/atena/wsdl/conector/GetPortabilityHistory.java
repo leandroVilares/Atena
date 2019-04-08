@@ -10,6 +10,7 @@ package com.brq.atena.wsdl.conector;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getPortabilityHistory", propOrder = {
     "arg0"
 })
+@XmlRootElement(name = "getPortabilityHistory", namespace = "http://ws.soa.cleartech.com.br/")
 public class GetPortabilityHistory {
 
     protected PortabilityHistoryIn arg0;
