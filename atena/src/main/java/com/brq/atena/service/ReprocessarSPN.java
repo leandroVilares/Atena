@@ -51,7 +51,7 @@ public class ReprocessarSPN {
 			if (!message.getStatusMensagem().equals("10") || !message.getStatusMensagem().equals("0")) {
 				jdbcTemplate.update(SQLUpdateStatus, status.getTelefone());
 				jdbcTemplate.update(SQLUpdateMensagem, message.getCdMensagem());
-			}else System.out.println("TESTE");
+			}else System.out.println("Não havia mensagens paradas!");
 		}
 
 	}
