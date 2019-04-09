@@ -20,7 +20,7 @@ public class IniciarProcesso {
 	public void iniciar(List<Status>  listaStatus ) throws Exception {
 	   //querie e classe de logica 	
 	    TratarLinhas tratarLinhas = new TratarLinhas();
-	    tratarLinhas.tratarLista(listaStatus, jdbcTemplate);
+	   // tratarLinhas.tratarLista(listaStatus, jdbcTemplate);
 	   // for (Status listaStatu : listaStatus) {
 		//	System.out.println(listaStatu.getProtocolo());
 		

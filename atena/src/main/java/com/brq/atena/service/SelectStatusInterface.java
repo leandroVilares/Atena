@@ -7,5 +7,5 @@ import com.brq.atena.model.Status;
 public interface SelectStatusInterface {
 
 	
-	public List<Status> selectStatus(String[] nrTelefones);
+	public void selectStatus(String[] nrTelefones) throws Exception;
 }

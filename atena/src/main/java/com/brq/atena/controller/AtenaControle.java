@@ -27,11 +27,16 @@ public class AtenaControle {
 	@RequestMapping(value = "/telefone/", method = RequestMethod.POST)
 	public ResponseEntity<?> receiveNrtelefone(@RequestBody @JsonDeserialize(as=String.class) @JsonProperty("telefones") String[] nrTelefones, UriComponentsBuilder ucBuilder) {
 		 
-		//ConfigurableApplicationContext context = 
-                //new ClassPathXmlApplicationContext("/atena/config.xml");
-		//SelectStatus selectStatus = (SelectStatus)context.getBean("selectStatus");
-		
-		//context.close();
+		ConfigurableApplicationContext context = 
+                new ClassPathXmlApplicationContext("/atena/config.xml");
+		SelectStatus selectStatus = (SelectStatus)context.getBean("selectStatus");
+		try {
+			selectStatus.selectStatus(nrTelefones);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		context.close();
 		return new ResponseEntity<String>("", HttpStatus.CREATED);
 	}
 	

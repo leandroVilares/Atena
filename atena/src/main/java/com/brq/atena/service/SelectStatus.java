@@ -1,10 +1,11 @@
 package com.brq.atena.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.brq.atena.model.AtenaRowMapper;
@@ -27,17 +28,17 @@ public class SelectStatus implements SelectStatusInterface{
 			"from SPN_TRANSACAO where NR_TELEFONE =?" ;
 	
 	@SuppressWarnings("null")
-	public List<Status> selectStatus(String[] nrTelefones){
-		List<Status> listStatus = null;
+	public void selectStatus(String[] nrTelefones) throws Exception{
+		List<Status> listStatus = new ArrayList<Status>();
 		 jdbcTemplate = new JdbcTemplate(this.dataSource);
 		for (int i = 0; i < nrTelefones.length; i++) {
-			Status status = (Status) this.jdbcTemplate.query(selectSQL, new AtenaRowMapper(),nrTelefones[i]);
+			Status status = (Status) this.jdbcTemplate.queryForObject(selectSQL, new AtenaRowMapper(),nrTelefones[i]);
 			listStatus.add(status);
 		}
-	  return listStatus ;
+	    tratarLinhas(listStatus,jdbcTemplate);
 	}
 	
-	public void tratarLinhas(List<Status> listStatus) throws Exception {
+	public void tratarLinhas(List<Status> listStatus,JdbcTemplate jdbcTemplate) throws Exception {
 		TratarLinhas tratarlinhas =new TratarLinhas();
 		tratarlinhas.tratarLista(listStatus, jdbcTemplate);
 	}
