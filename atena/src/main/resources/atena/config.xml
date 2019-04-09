@@ -84,6 +84,10 @@ DT_CRIACAO between :dataInicial  AND   :dataFinal and
 		class="com.brq.atena.service.IniciarProcesso">
 	</bean>
 	
+	<bean id="selectStatus" class="com.brq.atena.service.SelectStatus">
+	   <property name="dataSource" ref="dataSource" />
+	</bean>
+	
 	<bean id="atenaRowMapper"
 		class="com.brq.atena.model.AtenaRowMapper">
 	</bean>

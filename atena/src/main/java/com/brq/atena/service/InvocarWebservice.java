@@ -142,7 +142,7 @@ public class InvocarWebservice  extends WebServiceGatewaySupport {
 
 		System.out.println("Invocando O serviço"); 
 		WebServiceTemplate  webServiceTemplate = getWebServiceTemplate(); 
-		marshall(pacoteAtlys, webServiceTemplate);
+		marshall(pacoteConector, webServiceTemplate);
 
 		SolicitarPesquisaClienteContaAssinaturaAtributoPosPago request =
 				new com.brq.atena.wsdl.pospago.ObjectFactory().createSolicitarPesquisaClienteContaAssinaturaAtributoPosPago();
@@ -220,7 +220,7 @@ public class InvocarWebservice  extends WebServiceGatewaySupport {
 
 		System.out.println("Chamando o conector...");
 		WebServiceTemplate  webServiceTemplate = getWebServiceTemplate(); 
-		marshall(pacoteAtlys, webServiceTemplate);
+		marshall(pacoteConector, webServiceTemplate);
         PortabilityHistoryIn  portabilityHistoryIn = new com.brq.atena.wsdl.conector.ObjectFactory().createPortabilityHistoryIn();
 		GetPortabilityHistory getPortabilityHistory = 
 				new com.brq.atena.wsdl.conector.ObjectFactory().createGetPortabilityHistory();

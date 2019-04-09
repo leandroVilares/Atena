@@ -2,6 +2,8 @@ package com.brq.atena.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Status {
 	String telefone;
 	String protocolo;
@@ -27,7 +29,7 @@ public class Status {
 				+ assinante + ", statusTransacao=" + statusTransacao + ", statusVersao=" + statusVersao + ", janela=" + janela + "]";
 	
 }
-
+   
 	public String getTelefone() {
 		return telefone;
 	}

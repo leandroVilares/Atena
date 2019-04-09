@@ -2,29 +2,29 @@
 // Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
 // Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2019.03.13 às 04:53:53 PM BRT 
+// Gerado em: 2019.04.09 às 04:27:25 PM BRT 
 //
 
 
-package com.brq.atena.wsdl.conector;
+package com.brq.atena.wsdl.habilitacao.pre;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de getPortabilityHistory complex type.
+ * <p>Classe Java de ReverterPortInType complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="getPortabilityHistory"&gt;
+ * &lt;complexType name="ReverterPortInType"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://ws.soa.cleartech.com.br/}portabilityHistoryIn" minOccurs="0"/&gt;
+ *         &lt;element name="numeroLinha" type="{br/com/vivo/spn/integration/schema/SPNTypes}PhoneNumber"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -34,36 +34,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getPortabilityHistory", propOrder = {
-    "arg0"
+@XmlType(name = "ReverterPortInType", propOrder = {
+    "numeroLinha"
 })
-@XmlRootElement(name = "getPortabilityHistory", namespace = "http://ws.soa.cleartech.com.br/")
-public class GetPortabilityHistory {
+public class ReverterPortInType {
 
-    protected PortabilityHistoryIn arg0;
+    @XmlElement(required = true)
+    protected String numeroLinha;
 
     /**
-     * Obtém o valor da propriedade arg0.
+     * Obtém o valor da propriedade numeroLinha.
      * 
      * @return
      *     possible object is
-     *     {@link PortabilityHistoryIn }
+     *     {@link String }
      *     
      */
-    public PortabilityHistoryIn getArg0() {
-        return arg0;
+    public String getNumeroLinha() {
+        return numeroLinha;
     }
 
     /**
-     * Define o valor da propriedade arg0.
+     * Define o valor da propriedade numeroLinha.
      * 
      * @param value
      *     allowed object is
-     *     {@link PortabilityHistoryIn }
+     *     {@link String }
      *     
      */
-    public void setArg0(PortabilityHistoryIn value) {
-        this.arg0 = value;
+    public void setNumeroLinha(String value) {
+        this.numeroLinha = value;
     }
 
 }

@@ -28,7 +28,7 @@ public class TratarLinhas {
 		invocarWebservice = new InvocarWebservice();
 		for (Status status : listaStatus ) {
 			tratarproblema(status);
-			inputLogAtena.inserirLogAtena(status);
+			//inputLogAtena.inserirLogAtena(status);
 
 		}
 	}
