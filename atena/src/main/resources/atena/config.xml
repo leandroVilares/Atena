@@ -123,6 +123,5 @@ DT_CRIACAO between :dataInicial  AND   :dataFinal and
 	</property>
 </bean>
 
-
-
 </beans>
+
