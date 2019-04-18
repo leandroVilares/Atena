@@ -56,8 +56,8 @@ public class TratarLinhas {
 				}else if (reprocessarSpn.reprocessarLinhasHist(status)){
 					System.out.println("Haviam mensagens paradas na tabela histórico! Reprocessado!");
 				} else {
-					System.out.println("Não haviam mensagens paradas em transação nas tabelas de controle e bilhete do SPN"
-							+ "não confere com ultimo bilhete do conector, verificar!");    	
+					System.out.println("Não haviam mensagens paradas em transação nas tabelas de controle! Bilhete do SPN"
+							+ " não confere com ultimo bilhete do conector, verificar!");    	
 				}
 				cont++;
 			}

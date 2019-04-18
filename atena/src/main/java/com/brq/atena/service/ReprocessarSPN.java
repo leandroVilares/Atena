@@ -25,7 +25,7 @@ public class ReprocessarSPN {
 	String SQLlistMessageHist = "select sq_controle_mensagem_ea, cd_tipo_mensagem_ea, nr_telefone, cd_mensagem, in_status_mensagem, in_origem_mensagem, in_status_processamento, dt_criacao from SPN_CONTROLE_MENSAGEM_EA_HIST where nr_telefone in (?) order by dt_mensagem_ea desc";
 	String SQLUpdateStatus = "update spn_ow.spn_transacao set cd_status_versao = 'pending', cd_status_transacao = '20', ds_erro = '' where NR_telefone in (?)";
 	String SQLUpdateMensagem = "update SPN_CONTROLE_MENSAGEM_EA set in_status_mensagem = '0' where CD_MENSAGEM in (?)";
-
+	String SQLUpdateMensagemHist = "update SPN_CONTROLE_MENSAGEM_EA_HIST set in_status_mensagem = '0' where CD_MENSAGEM in (?)";
 
 	
 	public boolean reprocessarLinhas(Status status) {
@@ -48,9 +48,9 @@ public class ReprocessarSPN {
 		List<Message> messageHistList = jdbcTemplate.query(SQLlistMessageHist, new MessageRowMapper(),
 				status.getTelefone());
 		for (Message message : messageHistList) {
-			if (!message.getStatusMensagem().equals("10") || !message.getStatusMensagem().equals("0")) {
+			if (!message.getStatusMensagem().equals("10") & !message.getStatusMensagem().equals("0")) {
 				jdbcTemplate.update(SQLUpdateStatus, status.getTelefone());
-				jdbcTemplate.update(SQLUpdateMensagem, message.getCdMensagem());
+				jdbcTemplate.update(SQLUpdateMensagemHist, message.getCdMensagem());
 				retorno = true;
 				break;
 			}
