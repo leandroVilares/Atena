@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 
-@SpringBootApplication(scanBasePackages = { "com.brq.atena" })
+@SpringBootApplication(scanBasePackages = {"com.brq.atena"})
 @ImportResource("/atena/config.xml")
 public class Atena {
 	

@@ -17,15 +17,19 @@ public class IniciarProcesso {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void iniciar(List<Status>  listaStatus ) throws Exception {
+	public void iniciar(List<Status>  listaStatus) throws Exception {
 	   //querie e classe de logica 	
-	    TratarLinhas tratarLinhas = new TratarLinhas();
-	   // tratarLinhas.tratarLista(listaStatus, jdbcTemplate);
+	   TratarLinhas tratarLinhas = new TratarLinhas();
+	   tratarLinhas.tratarLista(listaStatus, jdbcTemplate);
 	   // for (Status listaStatu : listaStatus) {
 		//	System.out.println(listaStatu.getProtocolo());
 		
 	    }
-		
+	
+		public void name(String numero) {
+			
+			
+		}
 		
 	}
 	

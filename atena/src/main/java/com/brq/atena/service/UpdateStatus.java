@@ -19,7 +19,8 @@ public class UpdateStatus {
 
 	String SQLactive = "update SPN_TRANSACAO set cd_status_versao = 'active', cd_status_transacao = '14', ds_erro = '' where nr_protocolo = '?'";
 	String SQLold = "update SPN_TRANSACAO set cd_status_versao = 'old', cd_status_transacao = '14', ds_erro = '' where nr_protocolo = '?'";
-	String SQLpending = "update spn_ow.spn_transacao set cd_status_versao = 'pending', cd_status_transacao = '2', ds_erro = '' where nr_protocolo = '?'";
+	String SQLpending = "update spn_ow.spn_transacao set cd_status_versao = 'pending', cd_status_transacao = '7', ds_erro = '' where nr_protocolo = '?'";
+	String SQLpendingPreAtiva = "update spn_ow.spn_transacao set cd_status_versao = 'pending', cd_status_transacao = '2', ds_erro = '' where nr_protocolo = '?'";
 	String SQLsuspended = "update spn_ow.spn_transacao set cd_status_versao = 'suspended', cd_status_transacao = '2', ds_erro = '' where nr_protocolo = '?'";
 	String SQLcancelled = "update spn_ow.spn_transacao set cd_status_versao = 'cancelled', cd_status_transacao = '16',DS_ERRO = '' where nr_protocolo = '?'";
 	String SQLconflict = "update spn_ow.spn_transacao set cd_status_versao = 'conflict', cd_status_transacao = '6', ds_erro = '' where nr_protocolo = '?'";

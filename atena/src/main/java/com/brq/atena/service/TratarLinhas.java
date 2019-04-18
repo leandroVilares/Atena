@@ -22,45 +22,48 @@ public class TratarLinhas {
 	UpdateStatus updateStatus;
 	ReprocessarSPN reprocessarSpn;
 
-
 	public void tratarLista(List<Status> listaStatus, JdbcTemplate jdbcTemplate) throws Exception {
 		InputLogAtena inputLogAtena = new InputLogAtena(jdbcTemplate);
 		invocarWebservice = new InvocarWebservice();
-		for (Status status : listaStatus ) {
-			tratarproblema(status);
+		for (Status status : listaStatus) {
+			tratarproblema(status, jdbcTemplate);
 			//inputLogAtena.inserirLogAtena(status);
 
 		}
 	}
 
-	public void tratarproblema(Status status) {
+	public void tratarproblema(Status status, JdbcTemplate jdbcTemplate) {
 
 		invocarWebservice = new InvocarWebservice();
 		updateStatus = new UpdateStatus();
-		reprocessarSpn = new ReprocessarSPN();
-		
-        int cont = 0;
+		reprocessarSpn = new ReprocessarSPN(jdbcTemplate);
+
+		int cont = 0;
 		GetPortabilityHistoryResponse getPortabilityHistoryResponse = invocarWebservice
 				.createTemplateConectorGetPortabilityHistory(status.getTelefone());
 
-		List<PortabilityTicketOut> listPortabilityTicketOut =  getPortabilityHistoryResponse.getReturn();    
+		List<PortabilityTicketOut> listPortabilityTicketOut =  getPortabilityHistoryResponse.getReturn();
 		
+
 		for (PortabilityTicketOut portabilityTicketOut : listPortabilityTicketOut) {
-             if(portabilityTicketOut.getSistemaorigem().equals("SPN") & cont == 0) {
-            	 if(portabilityTicketOut.getSubscriptionVersionId().equals(status.getProtocolo())) {
-            		 
-            		 updateStatus.manterStatus(status, portabilityTicketOut); 
-            	 }else if (reprocessarSpn.reprocessarLinhas(status)) {
-            			 //Devolver "Reprocessado"        	
-            	 }else {reprocessarSpn.reprocessarLinhasHist(status);}
-            	 
-                  cont++;
-             }
+			if(portabilityTicketOut.getSistemaorigem().equals("SPN") & cont == 0) {
+				if(portabilityTicketOut.getSubscriptionVersionId().equals(status.getProtocolo())) {
+
+					updateStatus.manterStatus(status, portabilityTicketOut); 
+
+				}else if (reprocessarSpn.reprocessarLinhas(status)) {
+					System.out.println("Haviam mensagens paradas! Reprocessado!");  	
+				}else if (reprocessarSpn.reprocessarLinhasHist(status)){
+					System.out.println("Haviam mensagens paradas na tabela histórico! Reprocessado!");
+				} else {
+					System.out.println("Não haviam mensagens paradas em transação nas tabelas de controle e bilhete do SPN"
+							+ "não confere com ultimo bilhete do conector, verificar!");    	
+				}
+				cont++;
+			}
+
 		}
 
-
 	}
-
-	
 
 }

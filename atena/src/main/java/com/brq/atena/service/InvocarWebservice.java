@@ -76,7 +76,7 @@ public class InvocarWebservice  extends WebServiceGatewaySupport {
 
 
 
-	public void createTemplateSigan(String numero) throws Exception {
+	public ConsultarDadosNumeroResponse createTemplateSigan(String numero) throws Exception {
 
 		System.out.println("Invocando O serviço"); 
 		WebServiceTemplate  webServiceTemplate = getWebServiceTemplate(); 
@@ -87,16 +87,16 @@ public class InvocarWebservice  extends WebServiceGatewaySupport {
 		info.setIp("10.0.0.0");
 		//info.setServiceName();
 		info.setSystemModule("ATENA");
-		info.setUserName("FrangoLouco");
+		info.setUserName("RoboAtena");
 		request.setRequestInfo(info);
 		ArrayOfLong arrayOfLong =  new ObjectFactory().createArrayOfLong();
 		arrayOfLong.getLong().add(new Long(numero));
 		request.setListaMSISDN(arrayOfLong);
 
 		ConsultarDadosNumeroResponse response = (ConsultarDadosNumeroResponse) getWebServiceTemplate().marshalSendAndReceive(adressSigan, request,new SoapActionCallback(contextSigan));
-		System.out.println("Respopsta do SIGAN "  + "  "+ response.getRespostaWS().getMsisdnsEncontrados().getNumeroWSTO().get(0).getStatusNumero()  );
-
-
+		System.out.println("Respopsta do SIGAN "  + "  "+ response.getRespostaWS().getMsisdnsEncontrados().getNumeroWSTO().get(0).getTipoRede());
+		System.out.println("Respopsta do SIGAN "  + "  "+ response.getRespostaWS().getMsisdnsEncontrados().getNumeroWSTO().get(0).getTipoNumero());
+		return response;
 	}
 
 	@ResponseBody
