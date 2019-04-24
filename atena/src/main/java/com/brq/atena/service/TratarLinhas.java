@@ -1,5 +1,6 @@
 package com.brq.atena.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,9 +22,10 @@ public class TratarLinhas {
 	InvocarWebservice invocarWebservice;
 	UpdateStatus updateStatus;
 	ReprocessarSPN reprocessarSpn;
+	InputLogAtena inputLogAtena;
 
 	public void tratarLista(List<Status> listaStatus, JdbcTemplate jdbcTemplate) throws Exception {
-		InputLogAtena inputLogAtena = new InputLogAtena(jdbcTemplate);
+		inputLogAtena = new InputLogAtena(jdbcTemplate);
 		invocarWebservice = new InvocarWebservice();
 		for (Status status : listaStatus) {
 			tratarproblema(status, jdbcTemplate);
@@ -35,7 +37,7 @@ public class TratarLinhas {
 	public void tratarproblema(Status status, JdbcTemplate jdbcTemplate) {
 
 		invocarWebservice = new InvocarWebservice();
-		updateStatus = new UpdateStatus();
+		updateStatus = new UpdateStatus(jdbcTemplate);
 		reprocessarSpn = new ReprocessarSPN(jdbcTemplate);
 
 		int cont = 0;
@@ -48,9 +50,12 @@ public class TratarLinhas {
 		for (PortabilityTicketOut portabilityTicketOut : listPortabilityTicketOut) {
 			if(portabilityTicketOut.getSistemaorigem().equals("SPN") & cont == 0) {
 				if(portabilityTicketOut.getSubscriptionVersionId().equals(status.getProtocolo())) {
-
+					try{
 					updateStatus.manterStatus(status, portabilityTicketOut); 
-
+					}catch(SQLException e) {
+						System.out.println(e.getMessage());
+					}
+					
 				}else if (reprocessarSpn.reprocessarLinhas(status)) {
 					System.out.println("Haviam mensagens paradas! Reprocessado!");  	
 				}else if (reprocessarSpn.reprocessarLinhasHist(status)){
