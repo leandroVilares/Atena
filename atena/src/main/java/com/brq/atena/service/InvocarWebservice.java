@@ -218,7 +218,7 @@ public class InvocarWebservice  extends WebServiceGatewaySupport {
 
 	public GetPortabilityHistoryResponse createTemplateConectorGetPortabilityHistory(String numero) {
 
-		System.out.println("Chamando o conector...");
+		System.out.println("Chamando o GetPortabilityHistory...");
 		WebServiceTemplate  webServiceTemplate = getWebServiceTemplate(); 
 		marshall(pacoteConector, webServiceTemplate);
         PortabilityHistoryIn  portabilityHistoryIn = new com.brq.atena.wsdl.conector.ObjectFactory().createPortabilityHistoryIn();

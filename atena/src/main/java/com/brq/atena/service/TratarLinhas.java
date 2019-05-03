@@ -34,7 +34,7 @@ public class TratarLinhas {
 		}
 	}
 
-	public void tratarproblema(Status status, JdbcTemplate jdbcTemplate) {
+	public void tratarproblema(Status status, JdbcTemplate jdbcTemplate) throws Exception {
 
 		invocarWebservice = new InvocarWebservice();
 		updateStatus = new UpdateStatus(jdbcTemplate);
@@ -46,23 +46,36 @@ public class TratarLinhas {
 
 		List<PortabilityTicketOut> listPortabilityTicketOut =  getPortabilityHistoryResponse.getReturn();
 		
-
+		if (listPortabilityTicketOut.isEmpty()) {
+			String transacao = "Linha não foi encontrada no Conector, verificar!";
+			inputLogAtena.inserirLogAtena(status, transacao);
+		}
+			
+		
 		for (PortabilityTicketOut portabilityTicketOut : listPortabilityTicketOut) {
 			if(portabilityTicketOut.getSistemaorigem().equals("SPN") & cont == 0) {
 				if(portabilityTicketOut.getSubscriptionVersionId().equals(status.getProtocolo())) {
 					try{
 					updateStatus.manterStatus(status, portabilityTicketOut); 
+					String transacao = "Status Alterado!";
+					inputLogAtena.inserirLogAtena(status, portabilityTicketOut, transacao);
 					}catch(SQLException e) {
 						System.out.println(e.getMessage());
 					}
 					
 				}else if (reprocessarSpn.reprocessarLinhas(status)) {
-					System.out.println("Haviam mensagens paradas! Reprocessado!");  	
+					String transacao = "Haviam mensagens paradas! Reprocessado!";
+					inputLogAtena.inserirLogAtena(status, portabilityTicketOut, transacao);
+					//System.out.println("Haviam mensagens paradas! Reprocessado!");  	
 				}else if (reprocessarSpn.reprocessarLinhasHist(status)){
-					System.out.println("Haviam mensagens paradas na tabela histórico! Reprocessado!");
+					String transacao = "Haviam mensagens paradas na tabela histórico! Reprocessado!";
+					inputLogAtena.inserirLogAtena(status, portabilityTicketOut, transacao);
+					//System.out.println("Haviam mensagens paradas na tabela histórico! Reprocessado!");
 				} else {
-					System.out.println("Não haviam mensagens paradas em transação nas tabelas de controle! Bilhete do SPN"
-							+ " não confere com ultimo bilhete do conector, verificar!");    	
+					String transacao = "Não haviam mensagens paradas em transação nas tabelas de controle! Bilhete do SPN não confere com ultimo bilhete do conector, verificar!";
+					inputLogAtena.inserirLogAtena(status, portabilityTicketOut, transacao);
+					//System.out.println("Não haviam mensagens paradas em transação nas tabelas de controle! Bilhete do SPN"
+						//	+ " não confere com ultimo bilhete do conector, verificar!");    	
 				}
 				cont++;
 			}
